@@ -7,4 +7,16 @@
         select * from user where id = #{id}
     </select>
 
+    <delete id="deleteUserById" parameterType="string">
+        delete from user where id = #{id}
+    </delete>
+
+    <insert id="insertUser2DB" parameterType="UserEntity">
+        insert into user (id,name ,password,local,phone) value (#{id},#{name},#{password},#{local},#{phone})
+    </insert>
+
+    <update id="updateUser" parameterType="com.zhuandian.app_common.pojo.UserEntity">
+        update user set name = #{name} ,password = #{password},local = #{local},phone = #{phone} where id = #{id}
+    </update>
+
 </mapper>
