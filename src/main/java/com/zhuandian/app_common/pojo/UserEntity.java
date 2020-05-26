@@ -11,16 +11,37 @@ public class UserEntity {
     private String password;
     private String local;
     private String phone;
+    private String createAt;
+    private String updateAt;
 
-    public UserEntity() {
+
+    public String getCreateAt() {
+        return createAt;
     }
 
-    public UserEntity(String id, String name, String password, String local, String phone) {
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
+    }
+
+    public String getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(String updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public UserEntity(String id, String name, String password, String local, String phone, String createAt, String updateAt) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.local = local;
         this.phone = phone;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
+
+    public UserEntity() {
     }
 
 

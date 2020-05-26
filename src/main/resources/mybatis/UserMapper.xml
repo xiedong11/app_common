@@ -16,11 +16,19 @@
     </delete>
 
     <insert id="insertUser2DB" parameterType="UserEntity">
-        insert into user (id,name ,password,local,phone) value (#{id},#{name},#{password},#{local},#{phone})
+        insert into user (id,name ,password,local,phone,createAt,updateAt)
+                   value (#{id},#{name},#{password},#{local},#{phone},#{createAt},#{updateAt})
     </insert>
 
     <update id="updateUser" parameterType="com.zhuandian.app_common.pojo.UserEntity">
-        update user set name = #{name} ,password = #{password},local = #{local},phone = #{phone} where id = #{id}
+        update user set
+            name = #{name} ,
+            password = #{password},
+            local = #{local},
+            phone = #{phone},
+            createAt=#{createAt} ,
+            updateAt = #{updateAt}
+        where id = #{id}
     </update>
 
 </mapper>

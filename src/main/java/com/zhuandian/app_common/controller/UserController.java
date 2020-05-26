@@ -4,6 +4,8 @@ import cn.hutool.json.JSONObject;
 import com.zhuandian.app_common.mapper.UserMapper;
 import com.zhuandian.app_common.pojo.UserEntity;
 import com.zhuandian.app_common.utils.Response;
+import com.zhuandian.app_common.utils.StringUtils;
+import com.zhuandian.app_common.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +43,8 @@ public class UserController {
         UserEntity user = userMapper.findUserByName(userEntity.getName());
         if (user == null) {
             userEntity.setId(System.currentTimeMillis() + "");
+            userEntity.setCreateAt(TimeUtils.getTimeFormat());
+            userEntity.setUpdateAt(TimeUtils.getTimeFormat());
             userMapper.insertUser2DB(userEntity);
             Map<String, Object> map = new HashMap<>();
             map.put("data", userEntity);
@@ -52,7 +56,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Response login(@RequestBody JSONObject jsonObject){
+    public Response login(@RequestBody JSONObject jsonObject) {
         if (jsonObject == null) {
             return Response.error(501, "参数不允许为空");
         }
@@ -60,15 +64,19 @@ public class UserController {
         String userName = (String) jsonObject.get("name");
         String password = (String) jsonObject.get("password");
 
+        if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)) {
+            return Response.error(501, "参数不允许为空");
+        }
+
         UserEntity userEntity = userMapper.findUserByName(userName);
-        if (userEntity==null){
+        if (userEntity == null) {
             return Response.error(503, "用户不存在");
-        }else if (userEntity.getPassword().equals(password)){
+        } else if (userEntity.getPassword().equals(password)) {
             Map<String, Object> map = new HashMap<>();
             map.put("data", userEntity);
             map.put("msg", "登陆成功");
             return Response.ok(map);
-        }else {
+        } else {
             return Response.error();
         }
     }
