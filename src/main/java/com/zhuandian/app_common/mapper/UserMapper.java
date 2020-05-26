@@ -15,6 +15,8 @@ public interface UserMapper {
 
     UserEntity findUserById(String id);
 
+    UserEntity findUserByName(String name);
+
     void deleteUserById(String id);
 
     void insertUser2DB(UserEntity userEntity);
