@@ -1,5 +1,6 @@
 package com.zhuandian.app_common.controller;
 
+import cn.hutool.json.JSONObject;
 import com.zhuandian.app_common.mapper.UserMapper;
 import com.zhuandian.app_common.pojo.UserEntity;
 import com.zhuandian.app_common.utils.Response;
@@ -47,6 +48,28 @@ public class UserController {
             return Response.ok(map);
         } else {
             return Response.error(502, "用户已经存在");
+        }
+    }
+
+    @PostMapping("/login")
+    public Response login(@RequestBody JSONObject jsonObject){
+        if (jsonObject == null) {
+            return Response.error(501, "参数不允许为空");
+        }
+
+        String userName = (String) jsonObject.get("name");
+        String password = (String) jsonObject.get("password");
+
+        UserEntity userEntity = userMapper.findUserByName(userName);
+        if (userEntity==null){
+            return Response.error(503, "用户不存在");
+        }else if (userEntity.getPassword().equals(password)){
+            Map<String, Object> map = new HashMap<>();
+            map.put("data", userEntity);
+            map.put("msg", "登陆成功");
+            return Response.ok(map);
+        }else {
+            return Response.error();
         }
     }
 }
