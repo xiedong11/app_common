@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
 
-    UserEntity findUserById(String id);
+    UserEntity findUserById(long id);
 
     UserEntity findUserByName(String name);
 

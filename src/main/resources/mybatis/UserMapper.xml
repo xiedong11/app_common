@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhuandian.app_common.mapper.UserMapper">
 
-    <select id="findUserById" parameterType="string" resultType="UserEntity">
+    <select id="findUserById" parameterType="long" resultType="UserEntity">
         select * from user where id = #{id}
     </select>
 
@@ -11,7 +11,7 @@
         select * from user where name = #{name}
     </select>
 
-    <delete id="deleteUserById" parameterType="string">
+    <delete id="deleteUserById" parameterType="long">
         delete from user where id = #{id}
     </delete>
 

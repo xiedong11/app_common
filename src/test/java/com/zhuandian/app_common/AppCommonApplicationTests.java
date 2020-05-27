@@ -17,18 +17,18 @@ class AppCommonApplicationTests {
 //        testInsertUser();
 
         testFindUserById();
-
-        testDeleteUser();
+//
+//        testDeleteUser();
 
         testInsertUser();
 
-        testUpdateUser();
-        testFindUserById();
+//        testUpdateUser();
+//        testFindUserById();
     }
 
     private void testUpdateUser() {
         UserEntity userEntity = new UserEntity();
-        userEntity.setId("123456");
+        userEntity.setId(123456);
         userEntity.setLocal("ll");
         userEntity.setPassword("132456");
         userEntity.setPhone("100886");
@@ -38,7 +38,6 @@ class AppCommonApplicationTests {
 
     private void testInsertUser() {
         UserEntity userEntity = new UserEntity();
-        userEntity.setId("123456");
         userEntity.setLocal("china");
         userEntity.setPassword("132456");
         userEntity.setPhone("100886");
@@ -51,7 +50,7 @@ class AppCommonApplicationTests {
     }
 
     private void testFindUserById() {
-        UserEntity userById = userMapper.findUserById("123456");
+        UserEntity userById = userMapper.findUserById(123456);
         System.out.println(userById.toString());
     }
 

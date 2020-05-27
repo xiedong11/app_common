@@ -25,7 +25,7 @@ public class UserController {
 
 
     @GetMapping("/findUserById")
-    public UserEntity findUserById(@RequestParam("id") String id) {
+    public UserEntity findUserById(@RequestParam("id") long id) {
         return userMapper.findUserById(id);
     }
 
@@ -42,7 +42,6 @@ public class UserController {
 
         UserEntity user = userMapper.findUserByName(userEntity.getName());
         if (user == null) {
-            userEntity.setId(System.currentTimeMillis() + "");
             userEntity.setCreateAt(TimeUtils.getTimeFormat());
             userEntity.setUpdateAt(TimeUtils.getTimeFormat());
             userMapper.insertUser2DB(userEntity);

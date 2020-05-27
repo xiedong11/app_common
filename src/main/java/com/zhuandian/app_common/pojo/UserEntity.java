@@ -6,7 +6,7 @@ package com.zhuandian.app_common.pojo;
  * @date 2020/5/25.
  */
 public class UserEntity {
-    private String id;
+    private long id;
     private String name;
     private String password;
     private String local;
@@ -48,11 +48,11 @@ public class UserEntity {
         this.updateAt = updateAt;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
