@@ -16,8 +16,8 @@
     </delete>
 
     <insert id="insertUser2DB" parameterType="UserEntity">
-        insert into user (id,name ,password,local,phone,createAt,updateAt)
-                   value (#{id},#{name},#{password},#{local},#{phone},#{createAt},#{updateAt})
+        insert into user (id,name ,password,local,phone,createAt,updateAt,headImgUrl,type)
+                   value (#{id},#{name},#{password},#{local},#{phone},#{createAt},#{updateAt},#{headImgUrl},#{type})
     </insert>
 
     <update id="updateUser" parameterType="com.zhuandian.app_common.pojo.UserEntity">
@@ -27,7 +27,9 @@
             local = #{local},
             phone = #{phone},
             createAt=#{createAt} ,
-            updateAt = #{updateAt}
+            updateAt = #{updateAt},
+            headImgUrl = #{headImgUrl},
+            type = #{type}
         where id = #{id}
     </update>
 

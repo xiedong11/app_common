@@ -13,7 +13,24 @@ public class UserEntity {
     private String phone;
     private String createAt;
     private String updateAt;
+    private String headImgUrl;
+    private int type;
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getHeadImgUrl() {
+        return headImgUrl;
+    }
+
+    public void setHeadImgUrl(String headImgUrl) {
+        this.headImgUrl = headImgUrl;
+    }
 
     public String getCreateAt() {
         return createAt;
@@ -30,20 +47,6 @@ public class UserEntity {
     public void setUpdateAt(String updateAt) {
         this.updateAt = updateAt;
     }
-
-    public UserEntity(String id, String name, String password, String local, String phone, String createAt, String updateAt) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.local = local;
-        this.phone = phone;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-    }
-
-    public UserEntity() {
-    }
-
 
     public String getId() {
         return id;
