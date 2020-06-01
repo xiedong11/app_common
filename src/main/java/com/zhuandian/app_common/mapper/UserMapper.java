@@ -4,6 +4,8 @@ import com.zhuandian.app_common.pojo.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author xiedong
  * @desc
@@ -16,6 +18,8 @@ public interface UserMapper {
     UserEntity findUserById(long id);
 
     UserEntity findUserByName(String name);
+
+    List<UserEntity>  findAllUser();
 
     void deleteUserById(String id);
 

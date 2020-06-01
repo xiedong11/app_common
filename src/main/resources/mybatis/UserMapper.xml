@@ -7,6 +7,10 @@
         select * from user where id = #{id}
     </select>
 
+    <select id="findAllUser" resultType="UserEntity">
+        select * from user
+    </select>
+
     <select id="findUserByName" parameterType="string" resultType="UserEntity">
         select * from user where name = #{name}
     </select>

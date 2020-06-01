@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +28,11 @@ public class UserController {
     @GetMapping("/findUserById")
     public UserEntity findUserById(@RequestParam("id") long id) {
         return userMapper.findUserById(id);
+    }
+
+    @GetMapping("/findAllUser")
+    public List<UserEntity> findAllUser(){
+        return userMapper.findAllUser();
     }
 
     @GetMapping("/findUserByName")
